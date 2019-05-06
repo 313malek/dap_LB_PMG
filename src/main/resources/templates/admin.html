@@ -1,0 +1,60 @@
+<html>
+
+<head>
+
+<title>Salut de DaP</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{css/dap.css}" href="../static/css/dap.css">
+
+</head>
+
+
+<body>
+
+<!-- TODO lbpmg by Djer |Thymleaf| Ca n'est pas utile d'afficher cela dans l'admin (servait uniquement pour décourir ThymeLeaf dans la vue "Hello") -->
+<span>Bonjour !</span><span th:text="${maVar}"></span>
+
+
+
+
+<table style="width:100%">
+  <tr>
+    <th>ID</th>
+    <th>Token</th> 
+    <th>Expire</th>
+    <th>Refresh</th>
+  </tr>
+  
+  <tr th:each="entry: ${users}">
+    <td th:text="${entry.key}">bla</td>
+    <td th:text="${entry.value.accessToken}">bla</td> 
+    <td th:text="${entry.value.expirationTimeMilliseconds}">bla</td>
+    <td th:text="${entry.value.refreshToken}">bla</td>
+  </tr>
+
+<!-- TODO lbpmg by Djer |Thymleaf| Ces 2 lignes peuvent être supprimée. Le dev Front pourra "paercevoir" son tableau grace au valeur "en dur" de la boucle ci-dessus (lui ne véra qu'une Seul ligne) -->
+    
+  <tr>
+    <td>bla</td>
+    <td>bla</td> 
+    <td>bla</td>
+    <td>bla</td>
+  </tr>
+  <td>bla</td>
+    <td>bla</td> 
+    <td>bla</td>
+    <td>bla</td>
+  <tr>
+  </tr>
+</table> 
+
+
+
+
+
+
+</body>
+
+
+
+</html>

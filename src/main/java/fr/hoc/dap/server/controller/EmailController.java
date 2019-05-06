@@ -10,30 +10,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.hoc.dap.server.service.GmailService;
 
+//TODO lbpmg by Djer |JavaDoc| Il manque la "description" (de la classe) : la première ligne de la JavaDoc
 /**
- * @author house
  *
+ * @author house.
  */
 @RestController
 
 public class EmailController {
-    /** a Gmail configured service. */
+    /** A Gmail configured service. */
     @Autowired
     private GmailService service;
 
     /**
-     * display number of unread email.
+     * Display number of unread email.
+     * @param userKey Clé d'utilisateur. //TODO lbpmg by Djer |JavaDoc| "Clé utilisateur DaP" serait mieux
      * @return the number of unread emails.
-     * @throws GeneralSecurityException Security problems
-     * @throws IOException Google error
-     */
-
-    /**
-     *
-     * @param userKey Clé d'utilisateur.
-     * @return gkjghkj.
-     * @throws GeneralSecurityException kjhgkj.
-     * @throws IOException jbvdsjh.
+     * @throws GeneralSecurityException Security problems handling.
+     * @throws IOException Google error handling.
      */
     @RequestMapping("/email/nbunread")
     public Integer displayNbEmail(@RequestParam final String userKey) throws GeneralSecurityException, IOException {
@@ -41,5 +35,4 @@ public class EmailController {
         Integer nbEmails = service.getNbEmail(userKey);
         return nbEmails;
     }
-
 }

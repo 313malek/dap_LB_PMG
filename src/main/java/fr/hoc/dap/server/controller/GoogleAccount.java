@@ -24,29 +24,29 @@ import com.google.api.client.http.GenericUrl;
 
 import fr.hoc.dap.server.service.GoogleService;
 
+//TODO lbpmg by Djer |JavaDoc| Il manque la "description" (de la classe) : la première ligne de la JavaDoc
 /**
  *
- * @author house
- *
+ * @author house.
  */
 @Controller
 public class GoogleAccount extends GoogleService {
 
     /** Logger. */
     private static final Logger LOG = LogManager.getLogger();
-    /** start for senssible data to LOG. */
+    /** Start for sensible data to LOG. */
     private static final int SENSIBLE_DATA_FIRST_CHAR = 1;
-    /** last char for senssible data to LOG. */
+    /** Last char for sensible data to LOG. */
     private static final int SENSIBLE_DATA_LAST_CHAR = 7;
 
     /**
      * Handle the Google response.
-     * @param request The HTTP Request
-     * @param code    The (encoded) code use by Google (token, expirationDate,...)
-     * @param session the HTTP Session
-     * @return the view to display
+     * @param request The HTTP Request.
+     * @param code    The (encoded) code use by Google (token, expirationDate,...).
+     * @param session The HTTP Session.
+     * @return The view to display.
      * @throws ServletException When Google account could not be connected to DaP.
-     * @throws GeneralSecurityException A google probleme
+     * @throws GeneralSecurityException A Google problem.
      */
     @RequestMapping("/oAuth2Callback")
     public String oAuthCallback(@RequestParam final String code, final HttpServletRequest request,
@@ -82,10 +82,10 @@ public class GoogleAccount extends GoogleService {
     }
 
     /**
-     * retrieve the User ID in Session.
-     * @param session the HTTP Session
-     * @return the current User Id in Session
-     * @throws ServletException if no User Id in session
+     * Retrieve the User ID in Session.
+     * @param session The HTTP Session.
+     * @return The current User Id in Session.
+     * @throws ServletException If no User Id in session.
      */
     private String getUserid(final HttpSession session) throws ServletException {
         String userId = null;
@@ -102,9 +102,9 @@ public class GoogleAccount extends GoogleService {
 
     /**
      * Extract OAuth2 Google code (from URL) and decode it.
-     * @param request the HTTP request to extract OAuth2 code
-     * @return the decoded code
-     * @throws ServletException if the code cannot be decoded
+     * @param request The HTTP request to extract OAuth2 code.
+     * @return The decoded code.
+     * @throws ServletException If the code cannot be decoded.
      */
     private String extracCode(final HttpServletRequest request) throws ServletException {
         final StringBuffer buf = request.getRequestURL();
@@ -129,10 +129,9 @@ public class GoogleAccount extends GoogleService {
 
     /**
      * Build a current host (and port) absolute URL.
-     * @param req         The current HTTP request to extract schema, host, port
-     *                    informations
-     * @param destination the "path" to the resource
-     * @return an absolute URI
+     * @param req The current HTTP request to extract schema, host, port informations.
+     * @param destination The "path" to the resource.
+     * @return An absolute URI.
      */
     protected String buildRedirectUri(final HttpServletRequest req, final String destination) {
         final GenericUrl url = new GenericUrl(req.getRequestURL().toString());
@@ -143,11 +142,11 @@ public class GoogleAccount extends GoogleService {
     /**
      * Add a Google account (user will be prompt to connect and accept required
      * access).
-     * @param userId  the user to store Data
-     * @param request the HTTP request
-     * @param session the HTTP session
-     * @return the view to Display (on Error)
-     * @throws GeneralSecurityException .
+     * @param userId  The user to store Data.
+     * @param request The HTTP request.
+     * @param session The HTTP session.
+     * @return The view to Display (on Error).
+     * @throws GeneralSecurityException Security problems handling.
      */
     @RequestMapping("/account/add/{userId}")
     public String addAccount(@PathVariable final String userId, final HttpServletRequest request,
@@ -175,5 +174,4 @@ public class GoogleAccount extends GoogleService {
         // only when error occurs, else redirected BEFORE
         return response;
     }
-
 }

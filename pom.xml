@@ -5,6 +5,7 @@
 	<groupId>fr.hoc.dap</groupId>
 	<artifactId>server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<name>dap_LB_PMG</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -14,6 +15,8 @@
 
 
 	<properties>
+		<!-- TODO lbpmg by Djer |Maven| La prorpiété "java.version" est un "raccourci" 
+			(Spring Boot) pour els deux propriétés ci-dessous -->
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<java.version>1.8</java.version>
@@ -27,11 +30,24 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+
+		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client</artifactId>
 			<version>1.23.0</version>
 		</dependency>
 
+<!-- TODO lbpmg by Djer |Maven| Cette dépendance n'est plsu utile depuis que l'on gère "OAuth2Callback" nous-même (version "serveur") -->
 		<dependency>
 			<groupId>com.google.oauth-client</groupId>
 			<artifactId>google-oauth-client-jetty</artifactId>
@@ -60,6 +76,7 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.9.1</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
+
 	</dependencies>
 
 
@@ -71,6 +88,10 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<!-- TODO lbpmg by Djer |Audit Code| Il manque le "report" pour PMD -->
+	<!-- TODO lbpmg by Djer |Audit Code| Il manque le "report" pour CheckStyle -->
+	<!-- TODO lbpmg by Djer |Audit Code| Il manque le "report" pour la JavaDoc -->
 
 
 </project>
