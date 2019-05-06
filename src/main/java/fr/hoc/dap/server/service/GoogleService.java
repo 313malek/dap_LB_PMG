@@ -25,23 +25,29 @@ import com.google.api.services.gmail.GmailScopes;
 import fr.hoc.dap.server.Config;
 
 /**
- * Parent class for all the ServiceGoogle. Allows you to manage rights.
+ * Classe parente de tout le serviceGoogle. Permet de gérer les droits.
  * @author house
  */
 @Service
 public class GoogleService {
     /**
-     * Configuration.
+     *
      */
     @Autowired
     private Config maConf;
 
     // protected static final String bob = "Google Calendar API Java Quickstart";
     /** . */
+
     protected static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
     /** Dossier dans lequel les autorisations accordées par l'utilisateur seront sauvegardées . */
     // protected static final String credentialFolder = "tokens";
+
+    /**
+     * Global instance of the scopes required by this quickstart.
+     * If modifying these scopes, delete your previously saved tokens/ folder.
+     */
     private List<String> scopes;
 
     /** emplacement du fichier .*/
@@ -58,10 +64,10 @@ public class GoogleService {
     /**
      * Creates an authorized Credential object.
      * @param httpTransport The network HTTP Transport.
-     * @param userKey UserKey de l'utilisateur.
+     * @param userKey userKey de l'utilisateur.
      * @return An authorized Credential object.
      * @throws IOException If the credentials.json file cannot be found.
-     * @throws GeneralSecurityException Security problems handling.
+     * @throws GeneralSecurityException .
      */
     protected Credential getCredentials(final NetHttpTransport httpTransport, final String userKey)
             throws IOException, GeneralSecurityException {
@@ -77,13 +83,13 @@ public class GoogleService {
 
     /**
      * Load a Google flow.
-     * @return A Google Flow.
-     * @throws GeneralSecurityException Security error handling.
-     * @throws IOException If the credentials.json and tokens files cannot be found.
+     * @return A Google Flow
+     * @throws GeneralSecurityException .
+     * @throws IOException If the credentials.json and tokens files cannot be found..
      */
     public GoogleAuthorizationCodeFlow getFlow() throws GeneralSecurityException, IOException {
         final NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-
+        // Load client secrets.
         File in = new java.io.File(maConf.getCredentialsFilePath());
         Reader targetReader = new FileReader(in);
 
@@ -98,7 +104,7 @@ public class GoogleService {
     }
 
     /**
-     * @return maConf.
+     * @return the maConf
      */
     protected Config getConf() {
         return maConf;
@@ -106,9 +112,10 @@ public class GoogleService {
 
     /**
      * Define a new Dap Configuration.
-     * @param config The new Config.
+     * @param config the new Config
      */
     public void setConf(final Config config) {
         maConf = config;
     }
+
 }
